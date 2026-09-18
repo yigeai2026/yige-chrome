@@ -1,5 +1,5 @@
 """Maintainer check: real trial ZIP, isolated local state, no browser/profile access.
-Usage: python tests/installer-smoke.py --package C:/path/to/trial.zip
+Usage: python tests/installer-smoke.py [--package C:/path/to/trial.zip]
 Requires Python 3.11+ and Windows PowerShell. Does not touch actual Codex config.
 """
 import argparse
@@ -11,7 +11,7 @@ import tempfile
 import tomllib
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--package', required=True, type=Path)
+parser.add_argument('--package', type=Path)
 args = parser.parse_args()
 repo = Path(__file__).resolve().parents[1]
 base = Path(tempfile.mkdtemp(prefix='yige-installer-test-')) / '\u4e2d\u6587 \u7a7a\u683c'
@@ -26,8 +26,9 @@ env = dict(os.environ, LOCALAPPDATA=str(base / 'local'), YIGEAI_DATA_DIR=str(bas
 
 def run(extra=(), accept=True, install_root=install, package=args.package, expected=0):
     command = ['powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', str(repo / 'install.ps1'),
-               '-ConfigureCodex', '-InstallRoot', str(install_root), '-CodexConfigDirectory', str(config_dir),
-               '-PackagePath', str(package.resolve())]
+               '-ConfigureCodex', '-InstallRoot', str(install_root), '-CodexConfigDirectory', str(config_dir)]
+    if package is not None:
+        command.extend(['-PackagePath', str(package.resolve())])
     if accept:
         command.append('-AcceptLicense')
     command.extend(extra)
