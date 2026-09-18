@@ -12,3 +12,10 @@
 - 安装器隔离测试：真实包校验、中文/空格目录、配置备份与保留、skill 安装、重复运行保持配对、旧版/自定义冲突保护、损坏包拒绝。
 
 这些验证不等于所有客户端/登录方式、真实平台页面或用户机器通过。首次安装仍需完成 Chrome 加载、客户端重连、授权和实际读取。升级说明见 UPGRADE.zh-CN.md。云端安装测试见本仓库 Actions。
+
+## 公开发布后的检查
+
+- [v0.5.8-trial.1](https://github.com/yigeai2026/yige-chrome/releases/tag/v0.5.8-trial.1) 已公开发布，保留 trial 预发布标记。
+- [全新 Windows 安装 CI](https://github.com/yigeai2026/yige-chrome/actions/runs/35313449337) 通过：从公开 Release 下载并校验，完成隔离安装、配置保护和重复运行检查。
+- 私有源码精确构建提交 2883412 的完整 Windows CI 同样通过（135 项测试、40 工具集成、22 场景）。
+- 维护端另行匿名下载返回 HTTP 200，ZIP 大小和 SHA256 一致，公开 install.ps1 指向同一固定包。
