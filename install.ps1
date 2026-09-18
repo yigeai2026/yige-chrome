@@ -31,6 +31,12 @@ $CodexConfigDirectory = [System.IO.Path]::GetFullPath($CodexConfigDirectory)
 $configPath = Join-Path $CodexConfigDirectory 'config.toml'
 $skillPath = Join-Path $CodexConfigDirectory 'skills\yigeai-chrome'
 function Quote-TomlPath([string]$Value) { return ConvertTo-Json -InputObject ($Value.Replace('\', '/')) -Compress }
+function Get-Sha256([string]$Path) {
+    $algorithm = [System.Security.Cryptography.SHA256]::Create()
+    $stream = [System.IO.File]::OpenRead($Path)
+    try { return [BitConverter]::ToString($algorithm.ComputeHash($stream)).Replace('-', '').ToLowerInvariant() }
+    finally { $stream.Dispose(); $algorithm.Dispose() }
+}
 $mcpBlock = @(
     '# BEGIN YIGE INSTALLER MCP'
     '[mcp_servers.yigeai-chrome]'
@@ -55,7 +61,7 @@ function Read-CodexState {
 }
 function Get-TreeSignature([string]$Directory) {
     return @((Get-ChildItem -LiteralPath $Directory -File -Recurse | ForEach-Object {
-        $_.FullName.Substring($Directory.Length).Replace('\', '/') + ':' + (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash
+        $_.FullName.Substring($Directory.Length).Replace('\', '/') + ':' + (Get-Sha256 $_.FullName)
     } | Sort-Object)) -join "`n"
 }
 $mutex = New-Object System.Threading.Mutex($false, 'Local\YigeTrialInstaller')
@@ -82,7 +88,7 @@ try {
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             Invoke-WebRequest -Uri $packageUrl -OutFile $archive -UseBasicParsing
         }
-        if ((Get-Item -LiteralPath $archive).Length -ne $packageBytes -or (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant() -ne $packageHash) {
+        if ((Get-Item -LiteralPath $archive).Length -ne $packageBytes -or (Get-Sha256 $archive) -ne $packageHash) {
             throw 'PACKAGE_HASH_MISMATCH: download was not executed or extracted.'
         }
         Add-Type -AssemblyName System.IO.Compression.FileSystem
