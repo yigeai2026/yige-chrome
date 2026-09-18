@@ -44,7 +44,9 @@ assert parsed['model'] == 'fixture-model'
 assert parsed['mcp_servers']['other']['command'] == 'fixture-tool'
 entry = parsed['mcp_servers']['yigeai-chrome']
 assert Path(entry['command']).is_file() and Path(entry['args'][0]).is_file()
-assert entry['env']['YIGEAI_DATA_DIR'] == str(base / 'data').replace('\\', '/')
+# Windows may expand an 8.3 temp path (RUNNER~1) to its long spelling.
+# Check the actual directory identity rather than the path's textual spelling.
+assert Path(entry['env']['YIGEAI_DATA_DIR']).samefile(base / 'data'), entry['env']['YIGEAI_DATA_DIR']
 backups = list(config_dir.glob('config.toml.before-yige-*.bak'))
 assert len(backups) == 1 and backups[0].read_text(encoding='utf-8') == original
 skill = config_dir / 'skills/yigeai-chrome/SKILL.md'

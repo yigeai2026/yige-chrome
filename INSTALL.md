@@ -19,6 +19,7 @@ ExecutionPolicy 仅对这个子进程生效，不修改机器或用户的全局�
 也可使用环境允许的 PowerShell 7。不要以管理员身份运行。
 
 本脚本固定包版本、URL、长度和 SHA256，先验证再解压执行；不请求仓库登录。
+手动下载请选 Release 附件 `yige-0.5.7-windows-x64-trial.1.zip`，不要选 GitHub 自动生成的 Source code ZIP；后者只有安装入口，不能作为 Chrome 扩展加载。安装脚本使用 main 分支中的当前版本。
 支持 `-PackagePath C:\path\yige-0.5.7-windows-x64-trial.1.zip` 使用提前下载的**同一哈希**文件。
 支持 `-InstallRoot D:\Yige\apps` 自选目录；Codex 配置目录依次取显式 `-CodexConfigDirectory`、现有 CODEX_HOME、用户目录 `.codex`。
 

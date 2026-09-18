@@ -8,6 +8,6 @@
 SHA256 验证下载与固定发行文件一致，不等同于 Windows 代码签名或全面安全审计。
 安装器不修改全局执行策略，也不会绕过企业安全策略。
 
-普通故障通过 Issues 反馈，先脱敏。潜在漏洞请使用仓库 Security → Advisories → Report a vulnerability（维护者启用后可用）。
+普通故障通过 Issues 反馈，先脱敏。潜在漏洞请使用仓库 Security → Advisories → Report a vulnerability（本仓库已启用私密漏洞报告）。
 若该入口不可用，公开 Issue 只提出需要私下联系，不附利用细节、密钥或客户数据。
 首版不保证响应时限，也没有自动安全更新机制。
