@@ -15,10 +15,10 @@ if ($env:OS -ne 'Windows_NT' -or [System.Runtime.InteropServices.RuntimeInformat
     throw 'This trial supports Windows x64 only.'
 }
 if (-not $env:LOCALAPPDATA) { throw 'LOCALAPPDATA is unavailable. Use a regular Windows user session.' }
-$packageName = 'yige-0.5.7-windows-x64-trial.1'
-$packageHash = '1b0508a9536ec92ded455b87d9111f208a6df717854dfd125b9b17d4956d8bab'
-$packageBytes = 44328949
-$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.5.7-trial.1/$packageName.zip"
+$packageName = 'yige-0.5.8-windows-x64-trial.1'
+$packageHash = 'acf9a50e37ef82c8ed99d64dd82e859c21fa4ffb6683a00f417fcb53fb556ca3'
+$packageBytes = 44344598
+$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.5.8-trial.1/$packageName.zip"
 $utf8 = New-Object System.Text.UTF8Encoding($false)
 if (-not $InstallRoot) { $InstallRoot = Join-Path $env:LOCALAPPDATA 'Yige\apps' }
 $InstallRoot = [System.IO.Path]::GetFullPath($InstallRoot)
@@ -148,7 +148,7 @@ try {
         codexConfig = $(if ($ConfigureCodex) { $configPath } else { $null }); configBackup = $backup
         skill = $(if ($ConfigureCodex) { $skillPath } else { $null })
         extensionDirectory = (Join-Path $destination 'extension'); clientExamples = (Join-Path $destination 'client-config')
-        browserConnection = 'not_tested'; next = 'Load the extension in Chrome, reconnect Codex, explicitly share a test tab, then run status/list/snapshot.'
+        browserConnection = 'not_tested'; next = 'Load the extension in Chrome, reconnect Codex, enable a task work window (or share one test tab), then run status/list/snapshot.'
     } | ConvertTo-Json -Depth 4
 } finally {
     if ($locked) { $mutex.ReleaseMutex() }

@@ -59,6 +59,14 @@ assert json.loads((base / 'data/connection.json').read_text(encoding='utf-8'))['
 assert len(list(config_dir.glob('config.toml.before-yige-*.bak'))) == 1
 assert token not in config.read_text(encoding='utf-8')
 
+# A previous installer-managed release must be preserved, not silently upgraded.
+old_config = first_config.replace(b'yige-0.5.8-windows-x64-trial.1', b'yige-0.5.7-windows-x64-trial.1')
+assert old_config != first_config
+config.write_bytes(old_config)
+run(expected=1)
+assert config.read_bytes() == old_config
+config.write_bytes(first_config)
+
 # Never overwrite a custom existing MCP or skill. Exercise quoted and inline TOML.
 for existing in ['[mcp_servers."yigeai-chrome"]\ncommand="custom"\n',
                  "[mcp_servers.'yigeai-chrome']\ncommand='custom'\n",
@@ -80,5 +88,5 @@ run(install_root=base / 'bad-install', package=bad, expected=1)
 assert not (base / 'bad-install').exists()
 assert config.read_text(encoding='utf-8') == original
 print(json.dumps({'passed': True, 'checks': ['license_required', 'real_package_install', 'config_preserved_and_backed_up',
-    'valid_toml_and_skill', 'unicode_space_path', 'idempotent_pairing_and_config', 'quoted_and_inline_conflicts_preserved',
+    'valid_toml_and_skill', 'unicode_space_path', 'idempotent_pairing_and_config', 'previous_release_preserved', 'quoted_and_inline_conflicts_preserved',
     'custom_skill_preserved', 'tampered_package_rejected'], 'isolatedDirectory': str(base)}, ensure_ascii=True))
