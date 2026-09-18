@@ -7,7 +7,9 @@
 
 ## 把这一段发给 Codex
 
-> 请帮我安装一格：https://github.com/yigeai2026/yige-chrome 。先阅读 README.md、INSTALL.md 和 LICENSE.txt，说明许可和安装改动；我接受免费试用许可后，按安装指引完成下载、校验、本机配置和连接检查。保留已有模型及 MCP 配置，不操作未共享的浏览器页面。
+**第一次使用？打开 [新手一步一步安装教程](QUICKSTART.zh-CN.md)。如果已安装到“加载 Chrome 扩展”这一步，从教程第 2 步继续，不用重装。**
+
+> 请帮我安装一格：https://github.com/yigeai2026/yige-chrome 。先阅读 README.md、INSTALL.md、QUICKSTART.zh-CN.md 和 LICENSE.txt，说明许可和安装改动；我接受免费试用许可后，完成下载、校验、本机配置和连接检查。需要我点击 Chrome 时，一次只指导一步，告诉我在哪里操作、成功后应看到什么。文件夹路径不是终端命令。保留已有模型及 MCP 配置，不操作未共享的浏览器页面。
 
 Codex 需要能够在**你这台 Windows 电脑上执行本地命令**。仅能访问云端容器的会话不能安装到你的电脑。
 账号登录或 API 登录不是安装器的区分条件；客户端必须支持本地 MCP，所用模型必须能够调用工具。所有客户端与登录组合尚未逐一验收。
@@ -35,7 +37,8 @@ Codex 需要能够在**你这台 Windows 电脑上执行本地命令**。仅能�
 
 ## 手动安装与反馈
 
-- [详细安装指引](INSTALL.md)
+- [新手一步一步安装教程](QUICKSTART.zh-CN.md)
+- [给 Codex/维护者的安装指引](INSTALL.md)
 - [试用包下载](https://github.com/yigeai2026/yige-chrome/releases/tag/v0.5.7-trial.1)
 - [提交问题](https://github.com/yigeai2026/yige-chrome/issues/new?template=bug_report.md)
 - [免费试用许可](LICENSE.txt)
