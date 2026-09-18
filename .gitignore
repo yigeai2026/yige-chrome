@@ -1,0 +1,9 @@
+.local/
+*.zip
+*.zip.sha256
+node_modules/
+client-config/
+connection.json
+*.log
+*.jsonl
+.env*
