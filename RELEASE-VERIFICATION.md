@@ -15,4 +15,12 @@
 
 首轮云端检查在新标签尚无可读 URL 时调用等待工具报 Invalid URL；发布前补充只读元数据等待和两项回归，旧草稿未公开。
 
-公开包发布后，还会核对匿名下载哈希和本仓库 Windows 安装 CI。历史 0.5.8 及其验证记录保留在 Git 历史和旧 Release 中。
+## 公开发布检查
+
+- [0.5.9 Release](https://github.com/yigeai2026/yige-chrome/releases/tag/v0.5.9-trial.1) 已公开，保留免费 trial 预发布标记，固定下载及哈希已写入安装器。
+- [全新 Windows 安装 CI](https://github.com/yigeai2026/yige-chrome/actions/runs/35486015230) 通过：从公开 Release 下载，校验实际包、隔离安装、配置保护和重复运行。
+- 精确源码提交 39c906a 的 Windows 功能 CI 已通过（146 测试、41 工具集成、25 场景）。
+- 维护端匿名 asset API 下载 HTTP 200，44,350,612 字节和 SHA256 一致；匿名读取公开 install.ps1 确认固定同一版本和哈希。
+- 维护机直连标准 github.com 下载网址曾超时；云端标准下载通过。下载需要用户网络能访问 GitHub，不将本机网络失败算为包验证通过或插件故障。
+
+历史 0.5.8 及其验证记录保留在 Git 历史和旧 Release 中。
