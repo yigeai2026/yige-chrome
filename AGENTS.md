@@ -1,6 +1,6 @@
 # 一格安装入口
 
-本仓库是免费试用安装与反馈入口，不是浏览器核心源码。安装任务先读 README.md、INSTALL.md、LICENSE.txt；已有安装时先读 UPGRADE.zh-CN.md。
+本仓库是基础版安装与反馈入口，不是浏览器核心源码。安装任务先读 README.md、INSTALL.md、LICENSE.txt；已有安装时先读 UPGRADE.zh-CN.md。
 
 首次使用的用户按 QUICKSTART.zh-CN.md 逐步带领：每次一个界面动作，写明窗口、操作和成功标志。不得把裸文件夹路径作为可执行命令交给用户。路径需来自本机检查，并明确是在 Chrome 弹出的文件夹窗口粘贴，不是在 PowerShell 执行。
 

@@ -1,6 +1,6 @@
 # 一格安装教程：第一次使用也能跟着做
 
-适用：Windows 10/11 x64、Google Chrome、本机 Codex。当前试用包为 0.6.0 / general.1。
+适用：Windows 10/11 x64、Google Chrome、本机 Codex。当前基础版为 0.6.0 / basic.1。
 
 已安装旧版？请看 [升级教程](UPGRADE.zh-CN.md)，不要按首次安装覆盖旧配置。
 
@@ -22,9 +22,9 @@
 
 打开电脑上的 Codex，把下面这段话发到聊天框：
 
-> 请帮我安装一格：https://github.com/yigeai2026/yige-chrome 。先阅读 README.md、INSTALL.md、QUICKSTART.zh-CN.md 和 LICENSE.txt，说明试用许可。经我接受后完成本机安装，保留已有模型和 MCP 配置。需要我点击 Chrome 时，一次只指导一个步骤，告诉我在哪里操作、完成后应看到什么。不要让我把文件夹路径当成终端命令执行。
+> 请帮我安装一格：https://github.com/yigeai2026/yige-chrome 。先阅读 README.md、INSTALL.md、QUICKSTART.zh-CN.md 和 LICENSE.txt，说明基础版许可。经我接受后完成本机安装，保留已有模型和 MCP 配置。需要我点击 Chrome 时，一次只指导一个步骤，告诉我在哪里操作、完成后应看到什么。不要让我把文件夹路径当成终端命令执行。
 
-Codex 会先说明试用许可：允许免费使用，禁止修改和转售一格自有代码；第三方组件按各自许可证。
+Codex 会先说明基础版许可：允许按许可使用，禁止修改和转售一格自有代码；第三方组件按各自许可证。
 你同意后，回复“我接受试用许可，继续安装”。如果之前已经明确接受，不必重复接受。
 
 等待 Codex 完成下载、文件校验和本机配置。过程中不需要提供 GitHub 密码、API Key 或管理员密码。

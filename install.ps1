@@ -10,15 +10,15 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
-if (-not $AcceptLicense) { throw 'Read LICENSE.txt first. Run with -AcceptLicense only after the user accepts the free trial license.' }
+if (-not $AcceptLicense) { throw 'Read LICENSE.txt first. Run with -AcceptLicense only after the user accepts the basic edition license.' }
 if ($env:OS -ne 'Windows_NT' -or [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString() -ne 'X64') {
-    throw 'This trial supports Windows x64 only.'
+    throw 'This basic edition supports Windows x64 only.'
 }
 if (-not $env:LOCALAPPDATA) { throw 'LOCALAPPDATA is unavailable. Use a regular Windows user session.' }
-$packageName = 'yige-0.6.0-windows-x64-general.1'
-$packageHash = 'e7b4a4e4c1ab070e7f5ba80aa5ad79fad733bed9ef48a6180a44f1de473c98e9'
-$packageBytes = 44387392
-$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.6.0-general.1/$packageName.zip"
+$packageName = 'yige-0.6.0-windows-x64-basic.1'
+$packageHash = '6feca782b2fdb180389426e43aebdcd97b7b7a3441b0cbc5ea98b9235cf77433'
+$packageBytes = 44370234
+$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.6.0-basic.1/$packageName.zip"
 $utf8 = New-Object System.Text.UTF8Encoding($false)
 if (-not $InstallRoot) { $InstallRoot = Join-Path $env:LOCALAPPDATA 'Yige\apps' }
 $InstallRoot = [System.IO.Path]::GetFullPath($InstallRoot)
