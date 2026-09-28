@@ -1,4 +1,4 @@
-# One-user Windows installer. No administrator rights, global policy changes,
+﻿# One-user Windows installer. No administrator rights, global policy changes,
 # process termination, browser profile edits, or automatic browser actions.
 [CmdletBinding()]
 param(
@@ -15,10 +15,10 @@ if ($env:OS -ne 'Windows_NT' -or [System.Runtime.InteropServices.RuntimeInformat
     throw 'This trial supports Windows x64 only.'
 }
 if (-not $env:LOCALAPPDATA) { throw 'LOCALAPPDATA is unavailable. Use a regular Windows user session.' }
-$packageName = 'yige-0.5.9-windows-x64-trial.1'
-$packageHash = '2751e4584363a8786aa263edc8fcc7a704ef1dc78cf0870469bd74f7c6bba35e'
-$packageBytes = 44350612
-$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.5.9-trial.1/$packageName.zip"
+$packageName = 'yige-0.6.0-windows-x64-general.1'
+$packageHash = 'e7b4a4e4c1ab070e7f5ba80aa5ad79fad733bed9ef48a6180a44f1de473c98e9'
+$packageBytes = 44387392
+$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.6.0-general.1/$packageName.zip"
 $utf8 = New-Object System.Text.UTF8Encoding($false)
 if (-not $InstallRoot) { $InstallRoot = Join-Path $env:LOCALAPPDATA 'Yige\apps' }
 $InstallRoot = [System.IO.Path]::GetFullPath($InstallRoot)

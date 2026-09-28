@@ -1,0 +1,26 @@
+name: 功能建议
+description: 描述希望一格帮助完成的通用任务或专业流程
+title: "[建议] "
+body:
+  - type: markdown
+    attributes:
+      value: "本 Issue 公开可见。请勿填写密码、Cookie、密钥、客户隐私或配对文件。定制业务可查看 CONTACT.md。"
+  - type: textarea
+    id: task
+    attributes:
+      label: 希望完成的任务
+      description: 什么网站、目前怎样操作、希望减少哪一步？
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: 成功时应该看到什么
+      description: 描述具体结果，及哪些操作需要人工审核。
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 使用场景与环境
+      description: 个人或团队、频率、系统、Codex/Chrome 版本，不需要账号信息。

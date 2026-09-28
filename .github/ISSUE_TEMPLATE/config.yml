@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安装与升级说明
+    url: https://github.com/yigeai2026/yige-chrome/blob/main/QUICKSTART.zh-CN.md
+    about: 首次安装先看这里；已有安装请按升级说明协调切换。
+  - name: 定制业务与微信联系
+    url: https://github.com/yigeai2026/yige-chrome/blob/main/CONTACT.md
+    about: 专业任务包、企业网页流程和定制开发咨询。
