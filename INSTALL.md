@@ -31,8 +31,8 @@ ExecutionPolicy 仅对这个子进程生效，不修改机器或用户的全局�
 也可使用环境允许的 PowerShell 7。不要以管理员身份运行。
 
 本脚本固定包版本、URL、长度和 SHA256，先验证再解压执行；不请求仓库登录。
-手动下载请选 Release 附件 `yige-0.6.0-windows-x64-basic.1.zip`，不要选 GitHub 自动生成的 Source code ZIP；后者只有安装入口，不能作为 Chrome 扩展加载。安装脚本使用 main 分支中的当前版本。
-支持 `-PackagePath C:\path\yige-0.6.0-windows-x64-basic.1.zip` 使用提前下载的**同一哈希**文件。
+手动下载请选 Release 附件 `yige-0.6.1-windows-x64-basic.2.zip`，不要选 GitHub 自动生成的 Source code ZIP；后者只有安装入口，不能作为 Chrome 扩展加载。安装脚本使用 main 分支中的当前版本。
+支持 `-PackagePath C:\path\yige-0.6.1-windows-x64-basic.2.zip` 使用提前下载的**同一哈希**文件。
 支持 `-InstallRoot D:\Yige\apps` 自选目录；Codex 配置目录依次取显式 `-CodexConfigDirectory`、现有 CODEX_HOME、用户目录 `.codex`。
 
 **旧用户请先执行 [升级教程](UPGRADE.zh-CN.md)，本安装器不是自动升级器。**
@@ -56,7 +56,7 @@ ExecutionPolicy 仅对这个子进程生效，不修改机器或用户的全局�
 ## 成功判据与失败恢复
 
 分别报告：包校验、文件安装、Codex 配置、skill 安装、扩展加载、MCP 连接、共享页面读取。
-在真实 status 中确认核心/扩展/schema 都是 0.6.0；未共享或扩展未加载时明确待用户处理。
+在真实 status 中确认核心/扩展/schema 都是 0.6.1，并发现 32 个工具；未共享或扩展未加载时明确待用户处理。
 连接失败先检查实际状态，不循环 bind/connect，不要求用户绑定额外 Playwright 扩展。
 动作超时先复读，不能自动重放点击或提交。验证码由用户处理。
 已有同机一格时先结束相关任务再安排升级，不强杀进程，不并行启动不同版本。

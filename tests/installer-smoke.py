@@ -5,6 +5,7 @@ Requires Python 3.11+ and Windows PowerShell. Does not touch actual Codex config
 import argparse
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import tempfile
@@ -60,7 +61,7 @@ assert len(list(config_dir.glob('config.toml.before-yige-*.bak'))) == 1
 assert token not in config.read_text(encoding='utf-8')
 
 # A previous installer-managed release must be preserved, not silently upgraded.
-old_config = first_config.replace(b'yige-0.6.0-windows-x64-basic.1', b'yige-0.5.9-windows-x64-trial.1')
+old_config = re.sub(rb'yige-\d+\.\d+\.\d+-windows-x64-basic\.\d+', b'yige-0.5.9-windows-x64-trial.1', first_config)
 assert old_config != first_config
 config.write_bytes(old_config)
 run(expected=1)
