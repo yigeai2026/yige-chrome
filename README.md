@@ -4,9 +4,11 @@
 
 一格基础版提供通用浏览器连接与操控能力。你提出任务、授权工作窗口；Codex 理解任务，一格提供页面读取和操作工具。
 
-[开始安装](QUICKSTART.zh-CN.md) · [下载安装包](https://github.com/yigeai2026/yige-chrome/releases/tag/v0.6.1-basic.2) · [反馈问题 / 提建议](https://github.com/yigeai2026/yige-chrome/issues/new/choose) · [功能规划](ROADMAP.md) · [定制业务与联系](CONTACT.md)
+[开始安装](QUICKSTART.zh-CN.md) · [下载安装包](https://github.com/yigeai2026/yige-chrome/releases/tag/v0.6.2-basic.2) · [反馈问题 / 提建议](https://github.com/yigeai2026/yige-chrome/issues/new/choose) · [功能规划](ROADMAP.md) · [定制业务与联系](CONTACT.md)
 
-当前发行：**0.6.1 / basic.2，Windows 10/11 x64 基础版（预发布）**。已有用户请看 [升级说明](UPGRADE.zh-CN.md)。这是安装、下载、文档和反馈仓库；开发源码保持私有，**不是开源项目**。
+当前发行：**0.6.2 / basic.2，Windows 10/11 x64 基础版（预发布）**。已有用户请看 [升级说明](UPGRADE.zh-CN.md)。这是安装、下载、文档和反馈仓库；开发源码保持私有，**不是开源项目**。
+
+0.6.2完善自定义控件、点击前遮挡恢复、内层列表滚动及新页面加载后的标签归组，减少重复快照和固定等待；验证/确认弹窗与未知动作仍保留人工复核边界，真实网站提速幅度须按任务验证。
 
 ## 通用底座能做什么
 

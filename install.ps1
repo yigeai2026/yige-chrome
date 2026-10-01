@@ -15,10 +15,10 @@ if ($env:OS -ne 'Windows_NT' -or [System.Runtime.InteropServices.RuntimeInformat
     throw 'This basic edition supports Windows x64 only.'
 }
 if (-not $env:LOCALAPPDATA) { throw 'LOCALAPPDATA is unavailable. Use a regular Windows user session.' }
-$packageName = 'yige-0.6.1-windows-x64-basic.2'
-$packageHash = 'a17b2614a82168e70132677e9b5e8779b5ec51840f3a099044cef95be310ae8f'
-$packageBytes = 44379112
-$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.6.1-basic.2/$packageName.zip"
+$packageName = 'yige-0.6.2-windows-x64-basic.2'
+$packageHash = '2ed42c106fa9b86dae901cbdcd22e0b1093c55d095487a5739d738d1ba512291'
+$packageBytes = 44383534
+$packageUrl = "https://github.com/yigeai2026/yige-chrome/releases/download/v0.6.2-basic.2/$packageName.zip"
 $utf8 = New-Object System.Text.UTF8Encoding($false)
 if (-not $InstallRoot) { $InstallRoot = Join-Path $env:LOCALAPPDATA 'Yige\apps' }
 $InstallRoot = [System.IO.Path]::GetFullPath($InstallRoot)
