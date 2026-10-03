@@ -45,6 +45,7 @@ assert parsed['model'] == 'fixture-model'
 assert parsed['mcp_servers']['other']['command'] == 'fixture-tool'
 entry = parsed['mcp_servers']['yigeai-chrome']
 assert Path(entry['command']).is_file() and Path(entry['args'][0]).is_file()
+assert (install / 'yige-0.6.6-windows-x64-basic.1/yige-native-host.exe').is_file()
 # Windows may expand an 8.3 temp path (RUNNER~1) to its long spelling.
 # Check the actual directory identity rather than the path's textual spelling.
 assert Path(entry['env']['YIGEAI_DATA_DIR']).samefile(base / 'data'), entry['env']['YIGEAI_DATA_DIR']
@@ -90,4 +91,4 @@ assert not (base / 'bad-install').exists()
 assert config.read_text(encoding='utf-8') == original
 print(json.dumps({'passed': True, 'checks': ['license_required', 'real_package_install', 'config_preserved_and_backed_up',
     'valid_toml_and_skill', 'unicode_space_path', 'idempotent_pairing_and_config', 'previous_release_preserved', 'quoted_and_inline_conflicts_preserved',
-    'custom_skill_preserved', 'tampered_package_rejected'], 'isolatedDirectory': str(base)}, ensure_ascii=True))
+    'custom_skill_preserved', 'tampered_package_rejected', 'native_host_in_package'], 'isolatedDirectory': str(base)}, ensure_ascii=True))

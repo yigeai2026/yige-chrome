@@ -1,12 +1,12 @@
-# 从旧版升级到 0.6.2
+# 从旧版升级到 0.6.6
 
-无需新建 GitHub 地址。当前包为 Windows x64 `0.6.2 / basic.2`，入口仍是 https://github.com/yigeai2026/yige-chrome 。
+无需新建 GitHub 地址。当前包为 Windows x64 `0.6.6 / basic.1`，入口仍是 https://github.com/yigeai2026/yige-chrome 。
 
 **升级不是只点旧扩展的“重新加载”。** 安装目录按版本区分，客户端入口、Agent skill、Chrome 扩展和后台服务都需要一致。安装器会保护旧配置，不会自动覆盖。
 
 ## 这次升级的功能变化
 
-0.6.2延续0.6.1的通用上下文保全，修复自定义控件、点击前遮挡恢复、内层滚动及新页面加载后的分组，减少重复快照和固定等待。未知结果暂停继续保留，验证码、确认或付款弹窗不盲目关闭。
+0.6.6 延续通用上下文保全，增加多个 Chrome profile 的固定选择与独立状态、授权范围自动恢复、指定 JSON/text 接口正文读取、Agent/任务/网站标签组，以及新窗口首标签加载后的补分组；自定义控件、点击前遮挡恢复和内层滚动继续保留。未知结果暂停继续保留，验证码、确认或付款弹窗不盲目关闭。
 
 从旧进阶版升级时，基础版不再提供抖音/小红书专用调研、评论解析、持久研究任务、视频学习与云端转写；相关网站仍可按普通网页操作，专业任务包见 [功能规划](ROADMAP.md)。从0.6.1升级不删除旧数据或新增平台研究工具。
 
@@ -14,7 +14,7 @@
 
 ## 给普通用户：把这段发给 Codex
 
-> 请按 https://github.com/yigeai2026/yige-chrome/blob/main/UPGRADE.zh-CN.md 帮我升级一格到 0.6.2。先检查当前安装方式，保留模型和其他 MCP 配置，备份一格配置和 skill。先准备新包，再协调所有使用一格的客户端停止旧任务、切换入口和扩展。需要我操作 Chrome 时一次指导一步。不要强杀其他任务，不要重复安装两份 MCP，最终检查版本和测试页读取。
+> 请按 https://github.com/yigeai2026/yige-chrome/blob/main/UPGRADE.zh-CN.md 帮我升级一格到 0.6.6。先检查当前安装方式，保留模型和其他 MCP 配置，备份一格配置和 skill。先准备新包，再协调所有使用一格的客户端停止旧任务、切换入口和扩展。需要我操作 Chrome 时一次指导一步。不要强杀其他任务，不要重复安装两份 MCP，最终检查版本、profile 选择和测试页读取。
 
 已有明确的许可接受记录不必重复接受。升级没有自动清空任务数据库；但共享授权、元素 ID、媒体 ID 和会话归属不能跨版本沿用。先记录未完成任务和相关页面链接，不保存凭据。旧平台研究数据库保留原处，新版通用运行日志独立保存，不迁移或恢复研究任务。
 
@@ -59,15 +59,19 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -AcceptLic
 
 1. Chrome 地址栏打开 `chrome://extensions`，停用旧的一格扩展。
 2. “加载已解压的扩展程序”，选择**新包**的 `extensionDirectory`。路径粘贴在文件夹选择窗口，不是 PowerShell。
-3. 确认新的一格显示 **0.6.2**，启用状态正常，只保留一份一格处于启用状态。
+3. 确认新的一格显示 **0.6.6**，启用状态正常，只保留一份一格处于启用状态。
 
 通用版保留 `tabGroups` 权限，用于原生网站标签组管理；0.5.8 引入的 `downloads` 仍仅用于任务发起的链接下载。如果 Chrome 提示新增权限，需要用户确认。
+
+### Chrome 单独启动时自动连接（可选）
+
+首次在目标 Chrome profile 的一格弹窗授权并开启“自动启用”后，可注册包内的 Native Messaging 宿主，使 Chrome 在 MCP 客户端尚未打开时也能启动后台。先在 `chrome://extensions` 复制**该 profile 中实际加载的一格扩展 ID**；旧版 Native 注册可能仍指向旧包，须在所有一格任务结束后先由 Agent 核对并移除旧包自己的注册，再运行新包的 `scripts/install-native-host.ps1 -ExtensionId <实际扩展ID> -Apply`。脚本默认只预览；执行前应检查将写入的当前用户注册表路径。不要套用维护者电脑的扩展 ID，也不要为多个不同 profile 猜测同一个扩展 ID。注册与自动启用可分别撤销。
 
 ### 5. 重启旧服务与客户端
 
 旧 daemon 可能在客户端退出后仍驻留。**重启 Codex 或重载扩展不保证已切换 daemon。**
 
-普通用户最容易核实的方式：保存工作，正常退出使用一格的客户端，重启 Windows，然后打开 Chrome 和客户端。不要恢复仍指向旧包的 Grok/其他入口。
+普通用户最容易核实的方式：保存工作，正常退出使用一格的客户端，重启 Windows，然后打开 Chrome 和客户端。不要恢复仍指向旧包的 Grok/其他入口。已注册 Native 宿主时还要核对注册目标确实是新包，避免 Chrome 再拉起旧 daemon。
 
 维护者也可在确认全部相关任务停止后，核对监听本地 32146 端口的进程、完整路径和命令行，仅停止该旧一格 daemon，再重连新入口。不能按 `node.exe` 名称批量结束进程，也不能仅凭端口号认定进程身份。此操作由本机维护任务执行，本安装器不会强杀进程。
 
@@ -75,7 +79,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -AcceptLic
 
 在独立 Chrome 任务窗口打开无敏感信息的测试页，点一格 → **启用此工作窗口（无需逐页共享）**。
 
-Agent 先 `local_chrome_status`，再 `local_chrome_list_shared_tabs`，确认 extension/daemon/schema 为 **0.6.2**、可发现 **32 个工具**，并确认 `contextReturn.scope=generic_web`，读取匹配测试页的标题和 URL。
+Agent 先 `local_chrome_status`，再 `local_chrome_profiles` 和 `local_chrome_list_shared_tabs`，确认 extension/daemon/schema 为 **0.6.6**、可发现 **34 个工具**，并确认 `contextReturn.scope=generic_web`，读取匹配测试页的标题和 URL。
 然后用户在该窗口新开普通网页，Agent 再发现并只读核验；这次不需单独点共享。不要读取其他任务窗口。
 
 如果仍出现旧版本或工具目录，先核对实际进程和客户端连接缓存；不要连续 bind/connect 或要求绑定 Playwright。页面操作失败先复读状态，不自动重放。

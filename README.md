@@ -4,11 +4,11 @@
 
 一格基础版提供通用浏览器连接与操控能力。你提出任务、授权工作窗口；Codex 理解任务，一格提供页面读取和操作工具。
 
-[开始安装](QUICKSTART.zh-CN.md) · [下载安装包](https://github.com/yigeai2026/yige-chrome/releases/tag/v0.6.2-basic.2) · [反馈问题 / 提建议](https://github.com/yigeai2026/yige-chrome/issues/new/choose) · [功能规划](ROADMAP.md) · [定制业务与联系](CONTACT.md)
+[开始安装](QUICKSTART.zh-CN.md) · [下载安装包](https://github.com/yigeai2026/yige-chrome/releases/tag/v0.6.6-basic.1) · [反馈问题 / 提建议](https://github.com/yigeai2026/yige-chrome/issues/new/choose) · [功能规划](ROADMAP.md) · [定制业务与联系](CONTACT.md)
 
-当前发行：**0.6.2 / basic.2，Windows 10/11 x64 基础版（预发布）**。已有用户请看 [升级说明](UPGRADE.zh-CN.md)。这是安装、下载、文档和反馈仓库；开发源码保持私有，**不是开源项目**。
+当前发行：**0.6.6 / basic.1，Windows 10/11 x64 基础版（预发布）**。已有用户请看 [升级说明](UPGRADE.zh-CN.md)。这是安装、下载、文档和反馈仓库；开发源码保持私有，**不是开源项目**。
 
-0.6.2完善自定义控件、点击前遮挡恢复、内层列表滚动及新页面加载后的标签归组，减少重复快照和固定等待；验证/确认弹窗与未知动作仍保留人工复核边界，真实网站提速幅度须按任务验证。
+0.6.6 增加多个 Chrome profile 的明确选择和状态隔离、授权范围自动恢复、指定 JSON/text 接口正文读取，以及按 Agent/任务/网站命名的工作标签组；修复新窗口首标签加载后漏分组。自定义控件、点击前遮挡恢复和内层列表滚动继续保留；验证/确认弹窗与未知动作仍保留人工复核边界。
 
 ## 通用底座能做什么
 
@@ -65,7 +65,7 @@ Codex 必须能在**你的 Windows 电脑上执行本地命令并调用本地 MC
 
 - 本次包面向 Windows x64、Chrome、Codex 本地 MCP。其他 stdio MCP 客户端可用通用配置示例，但须单独验证兼容性。
 - macOS、Linux、ARM64 暂无完整验收的发行包；完整 iframe、脚本/blob 下载和自动升级仍有缺口。
-- 只接入明确共享的标签或工作窗口，其他窗口不自动授权。Chrome 完全退出后需重新授权。
+- 只接入明确共享的标签或工作窗口；目标 profile 显式开启自动启用后，重开 Chrome 会按保存的范围重新生成授权，可随时关闭或撤销。
 - 扩展需要页面脚本、标签、调试与任务下载等权限，执行仍受共享检查约束。通用包不含录音、ASR 或平台研究适配。
 - 页面内容可能通过工具结果发给所选模型。“本地桥接”不等于页面内容不离开电脑。
 - 不上传本机配对文件，不交出浏览器存储；反馈前遮盖账号、客户资料和密钥。详见 [安全与隐私](SECURITY.md)。
